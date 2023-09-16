@@ -14,16 +14,18 @@ class ImageSetViewController: UIViewController,UIImagePickerControllerDelegate,U
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var imageComments: UITextField!
-   // imageComment.text = String(imageComments)
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
+
     @IBAction func imageButton(_ sender: Any) {
         showAlert()
     }
+    
     
     
     //    アラートでカメラorアルバムの選択をさせる

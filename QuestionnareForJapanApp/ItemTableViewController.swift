@@ -33,82 +33,82 @@ class ItemTableViewController: UITableViewController, UIImagePickerControllerDel
         //        UserDefaults.standard.set(data, forKey: "userImage")
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedIndexPath = tableView.indexPathForSelectedRow
-        // indexPathを使用して選択されたセルに関連するデータを取得します
-        
-        // 遷移先のビューコントローラをインスタンス化します
-        //        let goToInput = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputViewController") as! InputViewController
-        let inputVC = self.storyboard?.instantiateViewController(identifier: "inputViewController") as! InputViewController
-        self.navigationController?.pushViewController(inputVC, animated: true)
-        
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedIndexPath = tableView.indexPathForSelectedRow
+//        // indexPathを使用して選択されたセルに関連するデータを取得します
+//
+//        // 遷移先のビューコントローラをインスタンス化します
+//        //        let goToInput = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "inputViewController") as! InputViewController
+//        let inputVC = self.storyboard?.instantiateViewController(identifier: "inputViewController") as! InputViewController
+//        self.navigationController?.pushViewController(inputVC, animated: true)
+//
+//    }
     //    @IBAction func tapImageView(_ sender: Any) {
     //        showAlert()
     //    }
     
-    //    アラートでカメラorアルバムの選択をさせる
-    func showAlert(){
-        let alertController = UIAlertController(title: "選択", message: "どちらを使用しますか", preferredStyle: .actionSheet)
-        
-        let cameraAction = UIAlertAction(title: "カメラ", style: .default) { (alert) in
-            self.checkCamera()
-        }
-        
-        let albumAction = UIAlertAction(title: "アルバム", style: .default) { (alert) in
-            self.checkAlbum()
-        }
-        
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-        
-        
-        alertController.addAction(cameraAction)
-        alertController.addAction(albumAction)
-        alertController.addAction(cancelAction)
-        present(alertController,animated: true,completion: nil)
-    }
-    //    カメラ立ち上げメソッド
-    func checkCamera(){
-        let sourceType:UIImagePickerController.SourceType = .camera
-        
-        //        カメラ利用可能かチェック
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            let cameraPicker = UIImagePickerController()
-            cameraPicker.allowsEditing = true
-            cameraPicker.sourceType = sourceType
-            cameraPicker.delegate = self
-            present(cameraPicker, animated: true,completion: nil)
-            
-        }
-    }
-    //    フォトライブラリの使用
-    func checkAlbum() {
-        let sourceType:UIImagePickerController.SourceType = .photoLibrary
-        
-        //        フォトライブラリのチェック
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            let cameraPicker = UIImagePickerController()
-            cameraPicker.allowsEditing = true
-            cameraPicker.sourceType = sourceType
-            cameraPicker.delegate = self
-            present(cameraPicker, animated: true,completion: nil)
-        }
-    }
-    //    カメラとアルバムを受け取るメソッド
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let editedImage = info[.editedImage]! as? UIImage {
-            UserDefaults.standard.set(editedImage.jpegData(compressionQuality: 0.1), forKey: "userImage")
-            imageView.image = editedImage
-            picker.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    
-    /* 追加 */
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
+//    //    アラートでカメラorアルバムの選択をさせる
+//    func showAlert(){
+//        let alertController = UIAlertController(title: "選択", message: "どちらを使用しますか", preferredStyle: .actionSheet)
+//
+//        let cameraAction = UIAlertAction(title: "カメラ", style: .default) { (alert) in
+//            self.checkCamera()
+//        }
+//
+//        let albumAction = UIAlertAction(title: "アルバム", style: .default) { (alert) in
+//            self.checkAlbum()
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+//
+//
+//        alertController.addAction(cameraAction)
+//        alertController.addAction(albumAction)
+//        alertController.addAction(cancelAction)
+//        present(alertController,animated: true,completion: nil)
+//    }
+//    //    カメラ立ち上げメソッド
+//    func checkCamera(){
+//        let sourceType:UIImagePickerController.SourceType = .camera
+//
+//        //        カメラ利用可能かチェック
+//
+//        if UIImagePickerController.isSourceTypeAvailable(.camera){
+//            let cameraPicker = UIImagePickerController()
+//            cameraPicker.allowsEditing = true
+//            cameraPicker.sourceType = sourceType
+//            cameraPicker.delegate = self
+//            present(cameraPicker, animated: true,completion: nil)
+//
+//        }
+//    }
+//    //    フォトライブラリの使用
+//    func checkAlbum() {
+//        let sourceType:UIImagePickerController.SourceType = .photoLibrary
+//
+//        //        フォトライブラリのチェック
+//        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+//            let cameraPicker = UIImagePickerController()
+//            cameraPicker.allowsEditing = true
+//            cameraPicker.sourceType = sourceType
+//            cameraPicker.delegate = self
+//            present(cameraPicker, animated: true,completion: nil)
+//        }
+//    }
+//    //    カメラとアルバムを受け取るメソッド
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        if let editedImage = info[.editedImage]! as? UIImage {
+//            UserDefaults.standard.set(editedImage.jpegData(compressionQuality: 0.1), forKey: "userImage")
+//            imageView.image = editedImage
+//            picker.dismiss(animated: true, completion: nil)
+//        }
+//    }
+//
+//
+//    /* 追加 */
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        picker.dismiss(animated: true, completion: nil)
+//    }
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -132,13 +132,12 @@ class ItemTableViewController: UITableViewController, UIImagePickerControllerDel
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let inputVC = self.storyboard?.instantiateViewController(identifier: "inputViewViewController") as! InputViewController
+        let inputVC = self.storyboard?.instantiateViewController(identifier: "inputViewController") as! InputViewController
+        inputVC.travelNum = travelNum
         inputVC.questionNum = questions[indexPath.row]
         self.navigationController?.pushViewController(inputVC, animated: true)
     }
-    
 }
-
     
     /*
      // Override to support conditional editing of the table view.
