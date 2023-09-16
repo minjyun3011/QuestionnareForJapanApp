@@ -21,6 +21,7 @@ class ItemTableViewController: UITableViewController, UIImagePickerControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         print(travelNum)
+        
         let userDefaults = UserDefaults.standard
         userDefaults.object(forKey: "questions")
         //キー"add"で配列をUserDefaultsに保存

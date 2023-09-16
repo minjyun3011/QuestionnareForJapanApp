@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ImageSetViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -90,12 +91,17 @@ class ImageSetViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     @IBAction func addToListButton(_ sender: Any) {
         //        ユーザー名
+        let userDefaults = UserDefaults.standard
         UserDefaults.standard.set(imageComments.text, forKey: "userName")
         let data = imageView.image?.jpegData(compressionQuality: 0.1)
         UserDefaults.standard.set(data, forKey: "userImage")
         //        画面遷移
-        let nextVC = self.storyboard?.instantiateViewController(identifier: "itemTableViewController")as! ItemTableViewController
-        self.navigationController?.pushViewController(nextVC, animated: true)
+//        let nextVC = self.storyboard?.instantiateViewController(identifier: "itemTableViewController")as! ItemTableViewController
+//        self.navigationController?.pushViewController(nextVC, animated: true)
+        if let targetViewController = navigationController?.viewControllers.dropLast(2).last {
+            navigationController?.popToViewController(targetViewController, animated: true)
+        }
+
     }
         /* 追加 */
         //    キーボードを下げる

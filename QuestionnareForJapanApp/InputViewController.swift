@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class InputViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     var travelNum: String?
     var questionNum: String?
+    var userInput: String = ""
+    
     
     @IBOutlet weak var TravelNumberLabel: UILabel!
     
@@ -23,11 +26,11 @@ class InputViewController: UIViewController, UIImagePickerControllerDelegate,UIN
         super.viewDidLoad()
         print(travelNum)
         print(questionNum)
-        let userDefaults = UserDefaults.standard
-        userDefaults.object(forKey: "questions")
         TravelNumberLabel.text = travelNum!
         ContentName.text = questionNum!
-    }
+        textField.text = userInput
+        }
+    
     //    TravelNumberLabel.text = String?(travelNum)
     //    ContentName.text = String?(questionNum)
     
@@ -52,6 +55,7 @@ class InputViewController: UIViewController, UIImagePickerControllerDelegate,UIN
             let userDefaults = UserDefaults.standard
             userDefaults.set(self.travelNum, forKey: "questions")
             userDefaults.set(self.questionNum, forKey: "questions")
+            userDefaults.set(self.textField, forKey: "questions")
             self.navigationController?.popViewController(animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
