@@ -12,7 +12,7 @@ class InputViewController: UIViewController, UIImagePickerControllerDelegate,UIN
     var travelNum: String?
     var questionNum: String?
     var userInput: String = ""
-    
+    var imageCommentText: String = ""
     
     @IBOutlet weak var TravelNumberLabel: UILabel!
     
@@ -20,15 +20,45 @@ class InputViewController: UIViewController, UIImagePickerControllerDelegate,UIN
     
     @IBOutlet weak var imageComment: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textField: UITextView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let userName =  UserDefaults.standard.object(forKey: "userName") as? String {
+            imageComment.text = userName
+        }
+        if let data = UserDefaults.standard.object(forKey: "userImage") as? Data {
+            imageView.image = UIImage(data: data)
+        }
+            
+            
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(travelNum)
         print(questionNum)
+        
+        if let userName =  UserDefaults.standard.object(forKey: "userName") as? String {
+            imageComment.text = userName
+        }
+        
         TravelNumberLabel.text = travelNum!
         ContentName.text = questionNum!
-        textField.text = userInput
+
+        if let questions =  UserDefaults.standard.object(forKey: "questions") as? [String: [String: Any]] {
+//            if let oldinput = questions[travelNum][questionNum] {
+//                userInput = oldinput
+//            }
+            if let oldInput = questions[travelNum!]?[questionNum!] as? [String: Any] {
+                textField.text = oldInput["text"] as! String
+            }
+        }
+        
+        
+//        textField.text = userInput
+        
+        
         }
     
     //    TravelNumberLabel.text = String?(travelNum)
@@ -53,9 +83,21 @@ class InputViewController: UIViewController, UIImagePickerControllerDelegate,UIN
         
         let addAction = UIAlertAction(title: "Add", style: .default) { [self] (alert) in
             let userDefaults = UserDefaults.standard
-            userDefaults.set(self.travelNum, forKey: "questions")
-            userDefaults.set(self.questionNum, forKey: "questions")
-            userDefaults.set(self.textField, forKey: "questions")
+//            userDefaults.set(self.travelNum, forKey: "questions")
+//            userDefaults.set(self.questionNum, forKey: "q")
+//            userDefaults.set(self.textField.text!, forKey: "qu")
+            
+            let questions: [String : Any] = [
+                self.travelNum!: [
+                    self.questionNum: [
+                        "text": self.textField.text!,
+//                        "image": ****,
+//                            "comment": ***
+                    ]
+                ]
+            ]
+            userDefaults.set(questions, forKey: "questions")
+            
             self.navigationController?.popViewController(animated: true)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)

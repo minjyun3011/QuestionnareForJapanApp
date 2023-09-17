@@ -172,6 +172,7 @@
                         <outlet property="ContentName" destination="4eS-74-e0i" id="tsX-ml-tTe"/>
                         <outlet property="TravelNumberLabel" destination="1bg-cN-X9l" id="aCN-I7-2jm"/>
                         <outlet property="imageComment" destination="S43-1A-v7u" id="9If-dN-uhT"/>
+                        <outlet property="imageView" destination="jd3-VT-6oE" id="7Nw-GH-QlQ"/>
                         <outlet property="textField" destination="dvA-0h-ANt" id="WE4-jj-BDu"/>
                     </connections>
                 </viewController>
@@ -192,7 +193,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noimage" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-cH-GPw">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noimage" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-cH-GPw">
                                 <rect key="frame" x="16" y="96" width="361" height="332"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>

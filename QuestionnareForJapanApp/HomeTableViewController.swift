@@ -10,7 +10,7 @@ import Firebase
 
 class HomeTableViewController: UITableViewController {
     
-    var travelNumber = ["1st Your Visit","2nd Your Visit"]
+    var travelNumber = ["Your 1st Visit","Your 2nd Visit"]
 
     @IBOutlet weak var tableview: UITableView!
     

@@ -98,9 +98,8 @@ class ImageSetViewController: UIViewController,UIImagePickerControllerDelegate,U
         //        画面遷移
 //        let nextVC = self.storyboard?.instantiateViewController(identifier: "itemTableViewController")as! ItemTableViewController
 //        self.navigationController?.pushViewController(nextVC, animated: true)
-        if let targetViewController = navigationController?.viewControllers.dropLast(2).last {
-            navigationController?.popToViewController(targetViewController, animated: true)
-        }
+        
+        self.navigationController?.popViewController(animated: true)
 
     }
         /* 追加 */
